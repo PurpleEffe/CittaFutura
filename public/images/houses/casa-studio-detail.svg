@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title id="title">Casa Studio dettaglio</title>
+  <desc id="desc">Pattern grafico per la Casa Studio</desc>
+  <rect width="800" height="600" fill="#0ea5e9" rx="40" />
+  <g fill="#e0f2fe" opacity="0.9">
+    <rect x="140" y="120" width="160" height="360" rx="24" />
+    <rect x="320" y="160" width="120" height="320" rx="20" />
+    <rect x="460" y="200" width="200" height="240" rx="28" />
+  </g>
+  <g stroke="#bae6fd" stroke-width="6" opacity="0.7">
+    <path d="M140 260h520" />
+    <path d="M140 320h520" />
+    <path d="M140 380h520" />
+  </g>
+</svg>

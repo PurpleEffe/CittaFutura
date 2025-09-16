@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title id="title">Torre Urbana dettaglio</title>
+  <desc id="desc">Pattern grafico per la Torre Urbana</desc>
+  <rect width="800" height="600" fill="#fb923c" rx="40" />
+  <g fill="#fff4e6" opacity="0.85">
+    <polygon points="200,480 200,180 260,140 260,480" />
+    <polygon points="320,480 320,160 380,120 380,480" />
+    <polygon points="440,480 440,200 500,160 500,480" />
+    <polygon points="560,480 560,240 600,210 600,480" />
+  </g>
+  <g stroke="#ea580c" stroke-width="10" opacity="0.5">
+    <line x1="200" y1="440" x2="600" y2="440" />
+    <line x1="200" y1="360" x2="600" y2="360" />
+    <line x1="200" y1="280" x2="600" y2="280" />
+  </g>
+</svg>
