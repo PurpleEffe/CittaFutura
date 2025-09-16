@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260">
+  <defs>
+    <linearGradient id="grad" x1="0" x2="1" y1="1" y2="0">
+      <stop offset="0" stop-color="#fde68a" />
+      <stop offset="1" stop-color="#facc15" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="260" fill="url(#grad)" rx="24" />
+  <circle cx="80" cy="80" r="40" fill="#fbbf24" opacity="0.9" />
+  <path d="M40 200h320l-40-60-60 32-50-48-60 56-70-36z" fill="#fef3c7" opacity="0.8" />
+  <text x="32" y="230" font-family="'Inter', sans-serif" font-weight="600" font-size="32" fill="#92400e">
+    Casa del Sole
+  </text>
+</svg>
