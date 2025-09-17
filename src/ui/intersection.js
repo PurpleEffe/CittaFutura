@@ -1,8 +1,41 @@
 const fadeSelector = '[data-animate="fade"]';
 
 export function registerAnimations() {
+  if (typeof document === 'undefined') {
+    return;
+  }
+
+  const elements = document.querySelectorAll(fadeSelector);
+  const lazyImages = document.querySelectorAll('img.lazy-image');
+
+  const markImageLoaded = (img) => {
+    img.dataset.loaded = 'true';
+  };
+
+  lazyImages.forEach((img) => {
+    if (img.complete) {
+      markImageLoaded(img);
+    } else if (typeof window !== 'undefined') {
+      img.addEventListener('load', () => markImageLoaded(img));
+      img.addEventListener('error', () => markImageLoaded(img));
+    } else {
+      markImageLoaded(img);
+    }
+  });
+
   if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
-    document.querySelectorAll(fadeSelector).forEach((el) => el.classList.remove('fade-enter'));
+    elements.forEach((el) => el.classList.remove('fade-enter'));
+    return;
+  }
+
+  const prefersReducedMotion =
+    window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (prefersReducedMotion) {
+    elements.forEach((el) => {
+      el.classList.remove('fade-enter');
+      el.classList.remove('fade-enter-active');
+    });
     return;
   }
 
@@ -18,22 +51,8 @@ export function registerAnimations() {
     { threshold: 0.2 }
   );
 
-  document.querySelectorAll(fadeSelector).forEach((el) => {
+  elements.forEach((el) => {
     el.classList.add('fade-enter');
     observer.observe(el);
-  });
-
-  const lazyImages = document.querySelectorAll('img.lazy-image');
-  lazyImages.forEach((img) => {
-    if (img.complete) {
-      img.dataset.loaded = 'true';
-    } else {
-      img.addEventListener('load', () => {
-        img.dataset.loaded = 'true';
-      });
-      img.addEventListener('error', () => {
-        img.dataset.loaded = 'true';
-      });
-    }
   });
 }
