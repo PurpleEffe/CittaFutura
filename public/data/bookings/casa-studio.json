@@ -1,0 +1,37 @@
+{
+  "houseId": "casa-studio",
+  "bookings": [
+    {
+      "issueNumber": 12,
+      "issueUrl": "https://github.com/cittafutura/citta-futura-prenotazioni/issues/12",
+      "status": "confirmed",
+      "state": "closed",
+      "stateReason": "completed",
+      "guestName": "Atelier Mediterraneo",
+      "guestEmail": "coordinamento@atelier.example",
+      "guests": 5,
+      "arrival": "2025-04-10",
+      "departure": "2025-04-16",
+      "notes": "Residenza dedicata alla co-progettazione del festival di quartiere.",
+      "createdAt": "2025-02-01T10:15:00.000Z",
+      "updatedAt": "2025-02-10T15:45:00.000Z",
+      "language": "it"
+    },
+    {
+      "issueNumber": 18,
+      "issueUrl": "https://github.com/cittafutura/citta-futura-prenotazioni/issues/18",
+      "status": "pending",
+      "state": "open",
+      "guestName": "Urban Commons Network",
+      "guestEmail": "hello@urbannetwork.example",
+      "guests": 3,
+      "arrival": "2025-05-05",
+      "departure": "2025-05-09",
+      "notes": "Workshop internazionale sugli usi civici.",
+      "createdAt": "2025-02-18T09:00:00.000Z",
+      "updatedAt": "2025-02-18T09:00:00.000Z",
+      "language": "en"
+    }
+  ],
+  "generatedAt": "2025-02-18T09:00:00.000Z"
+}

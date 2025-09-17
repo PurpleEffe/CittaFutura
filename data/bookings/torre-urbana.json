@@ -1,0 +1,22 @@
+{
+  "houseId": "torre-urbana",
+  "bookings": [
+    {
+      "issueNumber": 3,
+      "issueUrl": "https://github.com/cittafutura/citta-futura-prenotazioni/issues/3",
+      "status": "confirmed",
+      "state": "closed",
+      "stateReason": "completed",
+      "guestName": "Forum delle Città Resilienti",
+      "guestEmail": "forum@resilienti.example",
+      "guests": 14,
+      "arrival": "2025-06-02",
+      "departure": "2025-06-08",
+      "notes": "Programma internazionale di ricerca urbana.",
+      "createdAt": "2024-12-12T08:30:00.000Z",
+      "updatedAt": "2025-01-05T17:10:00.000Z",
+      "language": "en"
+    }
+  ],
+  "generatedAt": "2025-01-05T17:10:00.000Z"
+}
