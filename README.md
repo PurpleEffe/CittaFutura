@@ -26,34 +26,15 @@ I file statici pronti per il deploy sono in `dist/`.
 
 ## Struttura del progetto
 
-```
-├── index.html              # Home e mission
-├── houses.html             # Elenco case
-├── book.html               # Modulo prenotazione
-├── admin.html              # Area riservata (GitHub OAuth)
-├── privacy.html            # Informativa privacy
-├── src/
-│   ├── main.js             # bootstrap Alpine, logica pagine
-│   ├── main.css            # Tailwind + stili custom
-│   ├── i18n.js             # Dizionari IT/EN
-│   ├── services/
-│   │   ├── booking.js      # Invia form → Staticman
-│   │   ├── config.js       # Carica /.well-known/config.json
-│   │   ├── gh.js           # Wrapper API GitHub (Contents, OAuth)
-│   │   └── i18n.js         # Gestione lingua e traduzioni
-│   └── ui/
-│       ├── intersection.js # Effetti fade + lazy load
-│       └── toast.js        # Store notifiche Alpine
-├── data/
-│   ├── houses.json         # Config case (multilingua, gallery)
-│   └── bookings/           # Prenotazioni (una per file JSON)
-├── public/
-│   ├── img/                # Segnaposto per asset generici (demo usa URL remoti)
-│   ├── houses/<slug>/      # Cartella che ospiterà le foto locali caricate dall'admin
-│   └── .well-known/config.json # Config runtime (Staticman + OAuth)
-├── staticman.yml           # Config Staticman (scrive in data/bookings/)
-└── .github/workflows/      # Deploy Pages + triage PR prenotazioni
-```
+La cartella principale contiene i file HTML pubblici (`index`, `houses`, `book`, `admin`, `privacy`) e le risorse di supporto:
+
+- `src/` – entry-point Vite (`main.js`), stili (`main.css`), dizionari (`i18n.js`), servizi riutilizzabili e piccoli componenti Alpine (`ui/`).
+- `data/` – configurazioni di contenuto (`houses.json`) e prenotazioni (`bookings/`).
+- `public/` – asset statici serviti “as-is”; la demo usa URL remoti, ma gli upload dall’admin finiscono in `houses/<slug>/`. Il file `.well-known/config.json` fornisce le impostazioni runtime (Staticman + OAuth).
+- `staticman.yml` – definisce come vengono create le PR con le prenotazioni.
+- `.github/workflows/` – workflow GitHub Actions per build Pages e triage delle PR.
+
+Questa rappresentazione testuale sostituisce l’albero ASCII per ridurre i conflitti durante merge o cherry-pick da altri rami.
 
 ## Dati e immagini
 
