@@ -1,0 +1,22 @@
+{
+  "name": "cittafutura",
+  "version": "1.0.0",
+  "description": "Le case di Città Futura static site",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "alpinejs": "^3.15.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.10",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.4",
+    "vite": "^5.4.10"
+  }
+}

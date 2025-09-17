@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Work+Sans:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans text-dusk bg-sand antialiased;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-terracotta px-6 py-3 text-sm font-semibold text-white transition-opacity duration-300 ease-out hover:bg-terracotta/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-terracotta px-6 py-3 text-sm font-semibold text-terracotta transition-opacity duration-300 ease-out hover:bg-terracotta/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta;
+  }
+
+  .card {
+    @apply rounded-3xl bg-white shadow-lg shadow-dusk/10 transition duration-500 ease-out hover:-translate-y-1 hover:shadow-xl;
+  }
+
+  .tag {
+    @apply inline-flex items-center rounded-full bg-sand px-3 py-1 text-xs font-medium text-terracotta;
+  }
+
+  .fade-enter {
+    @apply opacity-0 translate-y-4;
+  }
+
+  .fade-enter-active {
+    @apply opacity-100 translate-y-0 transition duration-700 ease-out;
+  }
+
+  .fade-loop {
+    @apply transition-opacity duration-700 ease-in-out;
+  }
+}
+
+.lazy-image {
+  opacity: 0;
+  transition: opacity 0.7s ease-in-out;
+}
+
+.lazy-image[data-loaded="true"] {
+  opacity: 1;
+}
