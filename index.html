@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-i18n="site.name">Le case di Città Futura</title>
+    <meta
+      name="description"
+      content="Ospitalità solidale a Riace: scopri le case della comunità di Città Futura."
+    />
+    <link
+      rel="icon"
+      type="image/jpeg"
+      href="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&amp;fit=crop&amp;w=64&amp;q=60"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&amp;fit=crop&amp;w=2000&amp;q=80"
+    />
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body class="bg-sand text-dusk">
+    <div class="flex min-h-screen flex-col">
+      <header class="sticky top-0 z-50 bg-sand/90 backdrop-blur">
+        <nav class="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
+          <a href="./" class="flex items-center space-x-2" aria-label="Home">
+            <span class="rounded-full bg-terracotta px-3 py-1 text-xs font-semibold uppercase tracking-widest text-white">
+              CF
+            </span>
+            <span class="font-display text-lg" data-i18n="site.name">Le case di Città Futura</span>
+          </a>
+          <div class="flex items-center space-x-6 text-sm font-medium">
+            <a class="hover:text-terracotta focus-visible:outline focus-visible:outline-terracotta" href="index.html" data-i18n="nav.home">Home</a>
+            <a class="hover:text-terracotta focus-visible:outline focus-visible:outline-terracotta" href="houses.html" data-i18n="nav.houses">Case</a>
+            <a class="hover:text-terracotta focus-visible:outline focus-visible:outline-terracotta" href="book.html" data-i18n="nav.book">Prenota</a>
+            <a class="hover:text-terracotta focus-visible:outline focus-visible:outline-terracotta" href="admin.html" data-i18n="nav.admin">Admin</a>
+            <div x-data="languageSwitcher" class="relative">
+              <button
+                @click="toggle"
+                @keydown.escape="close"
+                class="flex items-center space-x-1 rounded-full border border-terracotta px-3 py-1 text-xs font-semibold text-terracotta focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta"
+                :aria-expanded="open"
+                type="button"
+              >
+                <span x-text="current.toUpperCase()"></span>
+                <svg class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.186l3.71-3.955a.75.75 0 011.08 1.04l-4.24 4.52a.75.75 0 01-1.08 0l-4.24-4.52a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                </svg>
+              </button>
+              <div
+                x-show="open"
+                x-transition.opacity
+                @click.away="close"
+                class="absolute right-0 mt-2 w-36 rounded-xl bg-white p-2 shadow-lg ring-1 ring-black/5"
+              >
+                <button
+                  class="w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-sand"
+                  type="button"
+                  @click="switchTo('it')"
+                >
+                  <span data-i18n="nav.language.it">Italiano</span>
+                </button>
+                <button
+                  class="w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-sand"
+                  type="button"
+                  @click="switchTo('en')"
+                >
+                  <span data-i18n="nav.language.en">English</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <main class="flex-1">
+        <section class="relative isolate overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&amp;fit=crop&amp;w=2000&amp;q=80"
+            alt="Scogliera colorata sul mare di Riomaggiore al tramonto"
+            class="h-[500px] w-full object-cover object-center"
+            loading="eager"
+          />
+          <div class="absolute inset-0 bg-gradient-to-r from-dusk/80 to-dusk/20"></div>
+          <div class="absolute inset-0 flex items-center">
+            <div class="mx-auto w-full max-w-5xl px-6">
+              <div class="max-w-xl space-y-6 text-white" data-animate="fade">
+                <p class="inline-flex rounded-full bg-white/20 px-3 py-1 text-xs uppercase tracking-[0.3em] text-sand">
+                  Città Futura
+                </p>
+                <h1 class="font-display text-4xl font-semibold" data-i18n="hero.title">
+                  Ospitalità solidale nel cuore di Riace
+                </h1>
+                <p class="text-lg" data-i18n="hero.subtitle">
+                  Accogliamo viaggiatori e nuove comunità in case condivise, per vivere la Calabria con lentezza e rispetto.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                  <a href="houses.html" class="btn-primary" data-i18n="hero.cta.houses">Vedi case</a>
+                  <a href="book.html" class="btn-secondary" data-i18n="hero.cta.book">Prenota</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="mx-auto flex max-w-5xl flex-col gap-12 px-6 py-16">
+          <div class="max-w-3xl space-y-4" data-animate="fade">
+            <h2 class="font-display text-3xl" data-i18n="mission.title">Ospitalità che crea comunità</h2>
+            <p class="text-lg" data-i18n="mission.text">
+              Città Futura nasce dall’esperienza di accoglienza di Riace. Le nostre case sono aperte a chi cerca un soggiorno autentico, etico e vicino alle persone che abitano questi luoghi.
+            </p>
+          </div>
+          <dl class="grid gap-8 md:grid-cols-3" data-animate="fade">
+            <div class="card space-y-3 p-6">
+              <dt class="font-semibold" data-i18n="mission.values.community.title">Comunità</dt>
+              <dd class="text-sm text-dusk/80" data-i18n="mission.values.community.text">
+                Ogni soggiorno sostiene la rete di vicinato, i laboratori artigiani e i progetti sociali locali.
+              </dd>
+            </div>
+            <div class="card space-y-3 p-6">
+              <dt class="font-semibold" data-i18n="mission.values.inclusion.title">Inclusione</dt>
+              <dd class="text-sm text-dusk/80" data-i18n="mission.values.inclusion.text">
+                Le case sono gestite insieme a famiglie del territorio e persone rifugiate, con attenzione ai bisogni di tutte e tutti.
+              </dd>
+            </div>
+            <div class="card space-y-3 p-6">
+              <dt class="font-semibold" data-i18n="mission.values.environment.title">Territorio</dt>
+              <dd class="text-sm text-dusk/80" data-i18n="mission.values.environment.text">
+                Promuoviamo un turismo lento: consigli su come muoversi senza auto e scoprire le bellezze dello Ionio.
+              </dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="bg-white py-16">
+          <div class="mx-auto max-w-5xl px-6">
+            <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between" data-animate="fade">
+              <div>
+                <h2 class="font-display text-3xl" data-i18n="houses.preview.title">Le nostre case</h2>
+                <p class="mt-2 max-w-2xl text-dusk/80" data-i18n="houses.preview.subtitle">
+                  Ogni appartamento racconta una storia di accoglienza condivisa. Prenota ora per vivere l’esperienza.
+                </p>
+              </div>
+              <a href="houses.html" class="btn-secondary self-start" data-i18n="houses.preview.cta">Tutte le case</a>
+            </div>
+            <div class="mt-10 grid gap-6 md:grid-cols-3" x-data="housesList" data-animate="fade">
+              <template x-if="loading">
+                <p class="col-span-3 text-center text-sm text-dusk/60">Loading…</p>
+              </template>
+              <template x-if="!loading && !houses.length">
+                <p class="col-span-3 text-center text-sm text-dusk/60" data-i18n="houses.page.empty">
+                  Nessuna casa disponibile al momento.
+                </p>
+              </template>
+              <template x-for="house in houses.slice(0,3)" :key="house.id">
+                <article class="card flex h-full flex-col overflow-hidden">
+                  <img
+                    class="h-48 w-full object-cover lazy-image"
+                    :src="house.cover"
+                    :alt="nameFor(house)"
+                    loading="lazy"
+                  />
+                  <div class="flex flex-1 flex-col space-y-4 p-6">
+                    <div>
+                      <h3 class="text-xl font-semibold" x-text="nameFor(house)"></h3>
+                      <p class="mt-2 text-sm text-dusk/70" x-text="summaryFor(house)"></p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                      <template x-for="tag in house.tags" :key="tag">
+                        <span class="tag" x-text="tag"></span>
+                      </template>
+                    </div>
+                    <a
+                      class="btn-secondary mt-auto self-start"
+                      :href="bookUrl(house)"
+                      data-i18n="houses.card.book"
+                    >
+                      Prenota
+                    </a>
+                  </div>
+                </article>
+              </template>
+            </div>
+          </div>
+        </section>
+
+        <section class="bg-gradient-to-b from-sand to-white py-16">
+          <div class="mx-auto max-w-5xl px-6">
+            <div class="space-y-3" data-animate="fade">
+              <h2 class="font-display text-3xl" data-i18n="gallery.title">Scopri Riace</h2>
+              <p class="text-dusk/80" data-i18n="gallery.caption">
+                Paesaggi, colori e comunità che rendono unico questo luogo.
+              </p>
+            </div>
+            <div class="mt-8 grid gap-6 md:grid-cols-3">
+              <figure class="overflow-hidden rounded-3xl shadow-lg" data-animate="fade">
+                <img
+                  src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"
+                  alt="Case colorate affacciate sul porto di Riomaggiore"
+                  class="h-64 w-full object-cover lazy-image"
+                  loading="lazy"
+                />
+              </figure>
+              <figure class="overflow-hidden rounded-3xl shadow-lg" data-animate="fade">
+                <img
+                  src="https://images.unsplash.com/photo-1470123186770-69bf0c1f0e6f?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"
+                  alt="Vicoli in pietra immersi nel borgo storico di Riace"
+                  class="h-64 w-full object-cover lazy-image"
+                  loading="lazy"
+                />
+              </figure>
+              <figure class="overflow-hidden rounded-3xl shadow-lg" data-animate="fade">
+                <img
+                  src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"
+                  alt="Colline verdi e campi assolati della costa ionica"
+                  class="h-64 w-full object-cover lazy-image"
+                  loading="lazy"
+                />
+              </figure>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="bg-dusk text-sand">
+        <div class="mx-auto max-w-5xl space-y-4 px-6 py-10 text-sm">
+          <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+            <p data-i18n="footer.rights">© Città Futura. Tutti i diritti riservati.</p>
+            <p data-i18n="footer.credit.photos">
+              Foto: Luca Bravo, Cristina Gottardi, Federico Di Dio, Jason Blackeye, Tim Graf, Shifaaz Shamoon via Unsplash (licenza Unsplash).
+            </p>
+          </div>
+          <p data-i18n="footer.credit.contact">Per collaborare: cittafutura@example.org</p>
+        </div>
+      </footer>
+    </div>
+
+    <div
+      class="pointer-events-none fixed inset-0 z-[60] flex flex-col items-end space-y-2 p-4"
+      x-data
+      x-init="() => {}"
+    >
+      <template x-for="toast in $store.toast.items" :key="toast.id">
+        <div
+          class="pointer-events-auto w-full max-w-xs rounded-2xl bg-white p-4 shadow-lg ring-1 ring-black/5"
+          :class="{ 'border-l-4 border-terracotta': toast.type === 'error', 'border-l-4 border-olive': toast.type === 'success' }"
+        >
+          <p class="text-sm text-dusk" x-text="toast.message"></p>
+        </div>
+      </template>
+    </div>
+  </body>
+</html>

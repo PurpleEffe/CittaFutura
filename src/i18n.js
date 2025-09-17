@@ -1,0 +1,253 @@
+export const defaultLanguage = 'it';
+export const languages = ['it', 'en'];
+
+export const dictionary = {
+  'site.name': {
+    it: 'Le case di Città Futura',
+    en: 'The homes of Città Futura',
+  },
+  'nav.home': { it: 'Home', en: 'Home' },
+  'nav.houses': { it: 'Case', en: 'Houses' },
+  'nav.book': { it: 'Prenota', en: 'Book' },
+  'nav.admin': { it: 'Admin', en: 'Admin' },
+  'nav.language.it': { it: 'Italiano', en: 'Italian' },
+  'nav.language.en': { it: 'English', en: 'English' },
+  'hero.title': {
+    it: 'Ospitalità solidale nel cuore di Riace',
+    en: 'Solidarity hospitality in the heart of Riace',
+  },
+  'hero.subtitle': {
+    it: 'Accogliamo viaggiatori e nuove comunità in case condivise, per vivere la Calabria con lentezza e rispetto.',
+    en: 'We welcome travellers and new communities in shared homes, to experience Calabria with care and slowness.',
+  },
+  'hero.cta.houses': { it: 'Vedi case', en: 'View houses' },
+  'hero.cta.book': { it: 'Prenota', en: 'Book now' },
+  'mission.title': {
+    it: 'Ospitalità che crea comunità',
+    en: 'Hospitality that builds community',
+  },
+  'mission.text': {
+    it: 'Città Futura nasce dall’esperienza di accoglienza di Riace. Le nostre case sono aperte a chi cerca un soggiorno autentico, etico e vicino alle persone che abitano questi luoghi.',
+    en: 'Città Futura stems from Riace’s welcoming experience. Our homes are open to anyone looking for an authentic, ethical stay in touch with the people who live here.',
+  },
+  'mission.values.community.title': { it: 'Comunità', en: 'Community' },
+  'mission.values.community.text': {
+    it: 'Ogni soggiorno sostiene la rete di vicinato, i laboratori artigiani e i progetti sociali locali.',
+    en: 'Every stay supports the neighbourhood network, artisan workshops and local social projects.',
+  },
+  'mission.values.inclusion.title': { it: 'Inclusione', en: 'Inclusion' },
+  'mission.values.inclusion.text': {
+    it: 'Le case sono gestite insieme a famiglie del territorio e persone rifugiate, con attenzione ai bisogni di tutte e tutti.',
+    en: 'Homes are managed together with local families and people seeking refuge, with attention to everyone’s needs.',
+  },
+  'mission.values.environment.title': { it: 'Territorio', en: 'Territory' },
+  'mission.values.environment.text': {
+    it: 'Promuoviamo un turismo lento: consigli su come muoversi senza auto e scoprire le bellezze dello Ionio.',
+    en: 'We promote slow tourism: tips on moving without a car and discovering the Ionian coast’s beauty.',
+  },
+  'gallery.title': { it: 'Scopri Riace', en: 'Discover Riace' },
+  'gallery.caption': {
+    it: 'Paesaggi, colori e comunità che rendono unico questo luogo.',
+    en: 'Landscapes, colours and communities that make this place unique.',
+  },
+  'houses.preview.title': { it: 'Le nostre case', en: 'Our homes' },
+  'houses.preview.subtitle': {
+    it: 'Ogni appartamento racconta una storia di accoglienza condivisa. Prenota ora per vivere l’esperienza.',
+    en: 'Each apartment tells a story of shared hospitality. Book now to live the experience.',
+  },
+  'houses.preview.cta': { it: 'Tutte le case', en: 'All houses' },
+  'footer.rights': {
+    it: '© Città Futura. Tutti i diritti riservati.',
+    en: '© Città Futura. All rights reserved.',
+  },
+  'footer.credit.photos': {
+    it: 'Foto: Luca Bravo, Cristina Gottardi, Federico Di Dio, Jason Blackeye, Tim Graf, Shifaaz Shamoon via Unsplash (licenza Unsplash).',
+    en: 'Photos: Luca Bravo, Cristina Gottardi, Federico Di Dio, Jason Blackeye, Tim Graf, Shifaaz Shamoon via Unsplash (Unsplash License).',
+  },
+  'footer.credit.contact': {
+    it: 'Per collaborare: cittafutura@example.org',
+    en: 'Collaborations: cittafutura@example.org',
+  },
+  'houses.page.title': { it: 'Case disponibili', en: 'Available homes' },
+  'houses.page.subtitle': {
+    it: 'Spazi accoglienti curati dalla comunità di Riace. Contattaci se hai esigenze specifiche.',
+    en: 'Welcoming spaces cared for by Riace’s community. Contact us if you have specific needs.',
+  },
+  'houses.page.empty': {
+    it: 'Nessuna casa disponibile al momento.',
+    en: 'No homes available at the moment.',
+  },
+  'houses.card.book': { it: 'Prenota', en: 'Book' },
+  'book.page.title': { it: 'Richiedi una prenotazione', en: 'Request a booking' },
+  'book.page.subtitle': {
+    it: 'Compila il form: il team di Città Futura approverà la richiesta appena possibile.',
+    en: 'Fill in the form: the Città Futura team will approve your request as soon as possible.',
+  },
+  'book.form.house': { it: 'Casa', en: 'House' },
+  'book.form.selectHouse': { it: 'Scegli una casa', en: 'Select a house' },
+  'book.form.name': { it: 'Nome e cognome', en: 'Full name' },
+  'book.form.email': { it: 'Email', en: 'Email' },
+  'book.form.phone': { it: 'Telefono', en: 'Phone' },
+  'book.form.checkin': { it: 'Arrivo', en: 'Arrival' },
+  'book.form.checkout': { it: 'Partenza', en: 'Departure' },
+  'book.form.people': { it: 'Persone', en: 'Guests' },
+  'book.form.notes': { it: 'Note', en: 'Notes' },
+  'book.form.notes.placeholder': {
+    it: 'Allergie, richieste specifiche…',
+    en: 'Allergies, specific requests…',
+  },
+  'book.form.privacy': {
+    it: "Ho letto e accetto l'informativa privacy",
+    en: 'I have read and accept the privacy policy',
+  },
+  'book.form.privacy.link': { it: 'Informativa privacy', en: 'Privacy policy' },
+  'book.form.submit': { it: 'Invia richiesta', en: 'Send request' },
+  'book.form.submitting': { it: 'Invio in corso…', en: 'Sending…' },
+  'book.form.success': {
+    it: 'Richiesta inviata! Riceverai una conferma via email dopo l’approvazione.',
+    en: 'Request sent! You will receive confirmation via email after approval.',
+  },
+  'book.form.error': {
+    it: 'Non è stato possibile inviare la richiesta. Riprova tra poco o usa il canale alternativo.',
+    en: 'The request could not be sent. Please try again soon or use the alternative channel.',
+  },
+  'book.form.invalidDates': {
+    it: 'La data di partenza deve essere successiva a quella di arrivo.',
+    en: 'Departure must be after arrival.',
+  },
+  'book.form.honeypot': {
+    it: 'Lascia questo campo vuoto',
+    en: 'Leave this field blank',
+  },
+  'book.form.required': { it: 'Campo obbligatorio', en: 'Required field' },
+  'book.form.altChannel': {
+    it: 'In alternativa puoi aprire una richiesta su GitHub.',
+    en: 'Alternatively you can open a request on GitHub.',
+  },
+  'book.form.openIssue': { it: 'Apri richiesta su GitHub', en: 'Open request on GitHub' },
+  'book.form.rateLimited': {
+    it: 'Stiamo già inviando una richiesta. Attendi qualche secondo prima di riprovare.',
+    en: 'A request is already being sent. Please wait a few seconds before retrying.',
+  },
+  'book.form.validation': {
+    it: 'Compila tutti i campi richiesti.',
+    en: 'Please fill in all required fields.',
+  },
+  'privacy.page.title': { it: 'Informativa privacy', en: 'Privacy policy' },
+  'privacy.page.subtitle': {
+    it: 'Trasparenza su come trattiamo i tuoi dati per la prenotazione e la gestione delle case.',
+    en: 'Transparency on how we handle your data for bookings and house management.',
+  },
+  'privacy.section.data.title': {
+    it: 'Dati trattati',
+    en: 'Data processed',
+  },
+  'privacy.section.data.text': {
+    it: 'Raccogliamo nome, contatti, informazioni sul soggiorno e note fornite volontariamente. I dati sono salvati in file JSON nel repository GitHub del progetto.',
+    en: 'We collect name, contacts, stay information and notes voluntarily provided. Data is stored in JSON files inside the project GitHub repository.',
+  },
+  'privacy.section.use.title': {
+    it: 'Finalità',
+    en: 'Purposes',
+  },
+  'privacy.section.use.text': {
+    it: 'Utilizziamo i dati solo per gestire la richiesta di soggiorno, comunicare con te e adempiere agli obblighi legali.',
+    en: 'We use the data only to manage your stay request, communicate with you and comply with legal obligations.',
+  },
+  'privacy.section.share.title': {
+    it: 'Condivisione',
+    en: 'Sharing',
+  },
+  'privacy.section.share.text': {
+    it: 'I dati sono accessibili ai manutentori del progetto su GitHub. Nessun dato è condiviso con terze parti commerciali.',
+    en: 'Data is accessible to project maintainers on GitHub. No data is shared with commercial third parties.',
+  },
+  'privacy.section.retention.title': {
+    it: 'Conservazione',
+    en: 'Retention',
+  },
+  'privacy.section.retention.text': {
+    it: 'Cancelliamo i dati su richiesta o dopo la chiusura del soggiorno. I file possono essere rimossi tramite la pagina Admin.',
+    en: 'We delete data upon request or after the stay is closed. Files can be removed via the Admin page.',
+  },
+  'privacy.section.rights.title': {
+    it: 'Diritti',
+    en: 'Rights',
+  },
+  'privacy.section.rights.text': {
+    it: 'Per accedere, rettificare o cancellare i dati scrivici a cittafutura@example.org.',
+    en: 'To access, rectify or erase data write to cittafutura@example.org.',
+  },
+  'admin.page.title': { it: 'Pannello di amministrazione', en: 'Administration panel' },
+  'admin.page.subtitle': {
+    it: 'Gestisci prenotazioni e gallerie. Accesso riservato ai collaboratori della repo GitHub.',
+    en: 'Manage bookings and galleries. Access reserved to collaborators of the GitHub repository.',
+  },
+  'admin.auth.login': { it: 'Accedi con GitHub', en: 'Sign in with GitHub' },
+  'admin.auth.logout': { it: 'Disconnetti', en: 'Sign out' },
+  'admin.auth.checking': {
+    it: 'Verifica permessi…',
+    en: 'Checking permissions…',
+  },
+  'admin.auth.denied': {
+    it: 'Non hai i permessi necessari per modificare questo progetto.',
+    en: 'You do not have the required permissions to modify this project.',
+  },
+  'admin.bookings.title': { it: 'Prenotazioni', en: 'Bookings' },
+  'admin.bookings.empty': { it: 'Nessuna prenotazione registrata.', en: 'No bookings recorded.' },
+  'admin.filters.status.all': { it: 'Tutti gli stati', en: 'All statuses' },
+  'admin.filters.search': { it: 'Cerca per nome o email…', en: 'Search by name or email…' },
+  'admin.bookings.table.headers.house': { it: 'Casa', en: 'House' },
+  'admin.bookings.table.headers.name': { it: 'Ospite', en: 'Guest' },
+  'admin.bookings.table.headers.dates': { it: 'Date', en: 'Dates' },
+  'admin.bookings.table.headers.people': { it: 'Persone', en: 'Guests' },
+  'admin.bookings.table.headers.status': { it: 'Stato', en: 'Status' },
+  'admin.bookings.table.headers.actions': { it: 'Azioni', en: 'Actions' },
+  'admin.actions.approve': { it: 'Approva', en: 'Approve' },
+  'admin.actions.reject': { it: 'Rifiuta', en: 'Reject' },
+  'admin.actions.cancel': { it: 'Annulla', en: 'Cancel' },
+  'admin.actions.edit': { it: 'Modifica', en: 'Edit' },
+  'admin.actions.delete': { it: 'Elimina', en: 'Delete' },
+  'admin.actions.save': { it: 'Salva', en: 'Save' },
+  'admin.actions.close': { it: 'Chiudi', en: 'Close' },
+  'admin.actions.export': { it: 'Esporta CSV', en: 'Export CSV' },
+  'admin.confirm.delete.title': { it: 'Confermi eliminazione?', en: 'Confirm deletion?' },
+  'admin.confirm.delete.body': {
+    it: 'L’operazione è irreversibile. Il file sarà rimosso dal repository.',
+    en: 'This action cannot be undone. The file will be removed from the repository.',
+  },
+  'admin.toasts.saved': { it: 'Prenotazione aggiornata.', en: 'Booking updated.' },
+  'admin.toasts.deleted': { it: 'Prenotazione eliminata.', en: 'Booking deleted.' },
+  'admin.toasts.uploaded': { it: 'Immagine caricata.', en: 'Image uploaded.' },
+  'admin.toasts.error': { it: 'Si è verificato un errore.', en: 'An error occurred.' },
+  'admin.images.title': { it: 'Foto case', en: 'House photos' },
+  'admin.images.subtitle': {
+    it: 'Carica nuove immagini (JPG/PNG, max 2MB). Usa i pulsanti per riordinare e impostare la cover.',
+    en: 'Upload new images (JPG/PNG, max 2MB). Use the buttons to reorder and set the cover.',
+  },
+  'admin.images.upload': { it: 'Carica immagine', en: 'Upload image' },
+  'admin.images.remove': { it: 'Rimuovi', en: 'Remove' },
+  'admin.images.setCover': { it: 'Imposta cover', en: 'Set cover' },
+  'admin.images.empty': { it: 'Nessuna immagine disponibile.', en: 'No image available.' },
+  'admin.images.moveUp': { it: 'Su', en: 'Up' },
+  'admin.images.moveDown': { it: 'Giù', en: 'Down' },
+  'admin.images.coverBadge': { it: 'Cover', en: 'Cover' },
+  'admin.images.fileTooLarge': {
+    it: 'File troppo grande (max 2MB)',
+    en: 'File too large (max 2MB)',
+  },
+  'admin.bookings.status.pending': { it: 'In attesa', en: 'Pending' },
+  'admin.bookings.status.approved': { it: 'Approvata', en: 'Approved' },
+  'admin.bookings.status.rejected': { it: 'Rifiutata', en: 'Rejected' },
+  'admin.bookings.status.canceled': { it: 'Annullata', en: 'Cancelled' },
+  'admin.export.filename': {
+    it: 'prenotazioni-citta-futura.csv',
+    en: 'citta-futura-bookings.csv',
+  },
+  'admin.bookings.lastUpdated': {
+    it: 'Ultimo aggiornamento',
+    en: 'Last updated',
+  },
+  'admin.images.update': { it: 'Salva galleria', en: 'Save gallery' },
+  'admin.bookings.refresh': { it: 'Aggiorna elenco', en: 'Refresh list' },
+};

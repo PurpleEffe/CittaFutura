@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-i18n="privacy.page.title">Informativa privacy</title>
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body class="bg-sand text-dusk">
+    <div class="flex min-h-screen flex-col">
+      <header class="bg-sand/95 shadow-sm">
+        <nav class="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
+          <a href="./" class="flex items-center space-x-2" aria-label="Home">
+            <span class="rounded-full bg-terracotta px-3 py-1 text-xs font-semibold uppercase tracking-widest text-white">CF</span>
+            <span class="font-display text-lg" data-i18n="site.name">Le case di Città Futura</span>
+          </a>
+          <div class="flex items-center space-x-6 text-sm font-medium">
+            <a class="hover:text-terracotta focus-visible:outline focus-visible:outline-terracotta" href="index.html" data-i18n="nav.home">Home</a>
+            <a class="hover:text-terracotta focus-visible:outline focus-visible:outline-terracotta" href="houses.html" data-i18n="nav.houses">Case</a>
+            <a class="hover:text-terracotta focus-visible:outline focus-visible:outline-terracotta" href="book.html" data-i18n="nav.book">Prenota</a>
+            <a class="hover:text-terracotta focus-visible:outline focus-visible:outline-terracotta" href="admin.html" data-i18n="nav.admin">Admin</a>
+            <div x-data="languageSwitcher" class="relative">
+              <button
+                @click="toggle"
+                @keydown.escape="close"
+                class="flex items-center space-x-1 rounded-full border border-terracotta px-3 py-1 text-xs font-semibold text-terracotta focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta"
+                :aria-expanded="open"
+                type="button"
+              >
+                <span x-text="current.toUpperCase()"></span>
+                <svg class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.186l3.71-3.955a.75.75 0 011.08 1.04l-4.24 4.52a.75.75 0 01-1.08 0l-4.24-4.52a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                </svg>
+              </button>
+              <div x-show="open" x-transition.opacity @click.away="close" class="absolute right-0 mt-2 w-36 rounded-xl bg-white p-2 shadow-lg ring-1 ring-black/5">
+                <button class="w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-sand" type="button" @click="switchTo('it')">
+                  <span data-i18n="nav.language.it">Italiano</span>
+                </button>
+                <button class="w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-sand" type="button" @click="switchTo('en')">
+                  <span data-i18n="nav.language.en">English</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <main class="flex-1 bg-gradient-to-b from-white to-sand">
+        <section class="mx-auto max-w-4xl px-6 py-12 space-y-6">
+          <h1 class="font-display text-3xl" data-i18n="privacy.page.title">Informativa privacy</h1>
+          <p class="text-lg text-dusk/80" data-i18n="privacy.page.subtitle">
+            Trasparenza su come trattiamo i tuoi dati per la prenotazione e la gestione delle case.
+          </p>
+          <div class="space-y-8 text-sm leading-relaxed">
+            <section class="space-y-2">
+              <h2 class="text-xl font-semibold" data-i18n="privacy.section.data.title">Dati trattati</h2>
+              <p data-i18n="privacy.section.data.text">
+                Raccogliamo nome, contatti, informazioni sul soggiorno e note fornite volontariamente. I dati sono salvati in file JSON nel repository GitHub del progetto.
+              </p>
+            </section>
+            <section class="space-y-2">
+              <h2 class="text-xl font-semibold" data-i18n="privacy.section.use.title">Finalità</h2>
+              <p data-i18n="privacy.section.use.text">
+                Utilizziamo i dati solo per gestire la richiesta di soggiorno, comunicare con te e adempiere agli obblighi legali.
+              </p>
+            </section>
+            <section class="space-y-2">
+              <h2 class="text-xl font-semibold" data-i18n="privacy.section.share.title">Condivisione</h2>
+              <p data-i18n="privacy.section.share.text">
+                I dati sono accessibili ai manutentori del progetto su GitHub. Nessun dato è condiviso con terze parti commerciali.
+              </p>
+            </section>
+            <section class="space-y-2">
+              <h2 class="text-xl font-semibold" data-i18n="privacy.section.retention.title">Conservazione</h2>
+              <p data-i18n="privacy.section.retention.text">
+                Cancelliamo i dati su richiesta o dopo la chiusura del soggiorno. I file possono essere rimossi tramite la pagina Admin.
+              </p>
+            </section>
+            <section class="space-y-2">
+              <h2 class="text-xl font-semibold" data-i18n="privacy.section.rights.title">Diritti</h2>
+              <p data-i18n="privacy.section.rights.text">
+                Per accedere, rettificare o cancellare i dati scrivici a cittafutura@example.org.
+              </p>
+            </section>
+          </div>
+        </section>
+      </main>
+
+      <footer class="bg-dusk text-sand">
+        <div class="mx-auto max-w-5xl space-y-4 px-6 py-10 text-sm">
+          <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+            <p data-i18n="footer.rights">© Città Futura. Tutti i diritti riservati.</p>
+            <p data-i18n="footer.credit.photos">
+              Foto: Luca Bravo, Cristina Gottardi, Federico Di Dio, Jason Blackeye, Tim Graf, Shifaaz Shamoon via Unsplash (licenza Unsplash).
+            </p>
+          </div>
+          <p data-i18n="footer.credit.contact">Per collaborare: cittafutura@example.org</p>
+        </div>
+      </footer>
+    </div>
+
+    <div class="pointer-events-none fixed inset-0 z-[60] flex flex-col items-end space-y-2 p-4" x-data>
+      <template x-for="toast in $store.toast.items" :key="toast.id">
+        <div
+          class="pointer-events-auto w-full max-w-xs rounded-2xl bg-white p-4 shadow-lg ring-1 ring-black/5"
+          :class="{ 'border-l-4 border-terracotta': toast.type === 'error', 'border-l-4 border-olive': toast.type === 'success' }"
+        >
+          <p class="text-sm text-dusk" x-text="toast.message"></p>
+        </div>
+      </template>
+    </div>
+  </body>
+</html>
