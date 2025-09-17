@@ -1,0 +1,134 @@
+[
+  {
+    "id": "casa-studio",
+    "slug": "casa-studio",
+    "name": {
+      "it": "Casa Studio",
+      "en": "Studio House"
+    },
+    "shortDescription": {
+      "it": "Un appartamento luminoso pensato per residenze d'artista e piccoli gruppi di ricerca.",
+      "en": "A bright apartment designed for artist residencies and small research groups."
+    },
+    "description": {
+      "it": "Situata nel cuore del quartiere, la Casa Studio offre ambienti flessibili per laboratori, sessioni di co-progettazione e momenti di vita condivisa. Gli spazi sono allestiti con arredi essenziali, materiali naturali e tecnologie a basso impatto.",
+      "en": "Located in the heart of the district, the Studio House provides flexible rooms for workshops, co-design sessions and shared living. Spaces are furnished with essential furniture, natural materials and low-impact technologies."
+    },
+    "address": "Via delle Arti 5, Distretto Città Futura",
+    "capacity": {
+      "beds": 4,
+      "maxGuests": 6
+    },
+    "amenities": [
+      "Wi-Fi fibra dedicata",
+      "Spazio atelier modulabile",
+      "Cucina condivisa con dispensa solidale",
+      "Postazione di registrazione audio"
+    ],
+    "services": {
+      "it": [
+        "Accoglienza e orientamento al quartiere",
+        "Supporto curatoriale per progetti artistici",
+        "Calendario di attività comunitarie"
+      ],
+      "en": [
+        "Welcome and neighborhood orientation",
+        "Curatorial support for artistic projects",
+        "Community activity calendar"
+      ]
+    },
+    "heroImage": "/images/houses/casa-studio.svg",
+    "gallery": [
+      "/images/houses/casa-studio.svg",
+      "/images/houses/casa-studio-detail.svg"
+    ]
+  },
+  {
+    "id": "giardino-condiviso",
+    "slug": "giardino-condiviso",
+    "name": {
+      "it": "Residenza Giardino",
+      "en": "Garden Residency"
+    },
+    "shortDescription": {
+      "it": "Una casa immersa nel verde urbano, ideale per programmi educativi e percorsi di rigenerazione.",
+      "en": "A house surrounded by urban greenery, ideal for educational programmes and regeneration paths."
+    },
+    "description": {
+      "it": "Affacciata sul parco produttivo, la Residenza Giardino dispone di serre leggere, una cucina comunitaria e spazi aperti per eventi pubblici. È pensata per accogliere gruppi intergenerazionali e percorsi di formazione.",
+      "en": "Facing the productive park, the Garden Residency includes light greenhouses, a community kitchen and open areas for public events. It is designed to host intergenerational groups and training programmes."
+    },
+    "address": "Largo delle Radici 12, Distretto Città Futura",
+    "capacity": {
+      "beds": 8,
+      "maxGuests": 12
+    },
+    "amenities": [
+      "Orto condiviso e serra bioclimatica",
+      "Sala polifunzionale con pareti mobili",
+      "Stanza accessibile con servizi dedicati",
+      "Deposito per attrezzi agricoli"
+    ],
+    "services": {
+      "it": [
+        "Programmazione educativa personalizzata",
+        "Facilitazione di incontri pubblici",
+        "Supporto logistico per attività outdoor"
+      ],
+      "en": [
+        "Tailored educational scheduling",
+        "Facilitation for public gatherings",
+        "Logistic support for outdoor activities"
+      ]
+    },
+    "heroImage": "/images/houses/giardino-condiviso.svg",
+    "gallery": [
+      "/images/houses/giardino-condiviso.svg",
+      "/images/houses/giardino-condiviso-detail.svg"
+    ]
+  },
+  {
+    "id": "torre-urbana",
+    "slug": "torre-urbana",
+    "name": {
+      "it": "Torre Urbana",
+      "en": "Urban Tower"
+    },
+    "shortDescription": {
+      "it": "Spazi verticali e panoramici dedicati a residenze di ricerca e programmi internazionali.",
+      "en": "Vertical panoramic spaces dedicated to research residencies and international programmes."
+    },
+    "description": {
+      "it": "La Torre Urbana connette un osservatorio panoramico con piani attrezzati per lavoro, studio e presentazioni. I piani superiori ospitano alloggi temporanei e una terrazza per attività pubbliche.",
+      "en": "The Urban Tower connects a panoramic observatory with floors equipped for work, study and presentations. Upper levels host temporary accommodation and a terrace for public activities."
+    },
+    "address": "Piazza della Prossimità 1, Distretto Città Futura",
+    "capacity": {
+      "beds": 10,
+      "maxGuests": 16
+    },
+    "amenities": [
+      "Osservatorio con strumentazione multimediale",
+      "Sale riunioni con traduzione simultanea",
+      "Alloggi modulari con servizi autonomi",
+      "Terrazza attrezzata per eventi"
+    ],
+    "services": {
+      "it": [
+        "Coordinamento logistico per delegazioni",
+        "Supporto per conferenze ibride",
+        "Connessioni con istituzioni partner"
+      ],
+      "en": [
+        "Logistic coordination for delegations",
+        "Support for hybrid conferences",
+        "Liaisons with partner institutions"
+      ]
+    },
+    "heroImage": "/images/houses/torre-urbana.svg",
+    "gallery": [
+      "/images/houses/torre-urbana.svg",
+      "/images/houses/torre-urbana-detail.svg"
+    ]
+  }
+]
