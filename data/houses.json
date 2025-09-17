@@ -1,0 +1,62 @@
+[
+  {
+    "id": "casa-del-porto",
+    "name": {
+      "it": "Casa del Porto",
+      "en": "Harbour Home"
+    },
+    "summary": {
+      "it": "Appartamento luminoso con terrazzo vista mare, ideale per famiglie e gruppi piccoli.",
+      "en": "Bright apartment with a sea-view terrace, perfect for families and small groups."
+    },
+    "location": "Riace Marina (RC)",
+    "cover": "https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=1600&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80"
+    ],
+    "tags": ["mare", "famiglie", "terrazza"],
+    "active": true
+  },
+  {
+    "id": "casa-della-piazza",
+    "name": {
+      "it": "Casa della Piazza",
+      "en": "Piazza House"
+    },
+    "summary": {
+      "it": "Nel cuore del borgo storico di Riace, a pochi passi dai laboratori artigiani.",
+      "en": "In the heart of the historic village, a few steps from artisan workshops."
+    },
+    "location": "Riace Borgo (RC)",
+    "cover": "https://images.unsplash.com/photo-1470123186770-69bf0c1f0e6f?auto=format&fit=crop&w=1600&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1470123186770-69bf0c1f0e6f?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=1600&q=80"
+    ],
+    "tags": ["borgo", "coppie", "botteghe"],
+    "active": true
+  },
+  {
+    "id": "casa-dei-gelsi",
+    "name": {
+      "it": "Casa dei Gelsi",
+      "en": "Mulberry House"
+    },
+    "summary": {
+      "it": "Casetta indipendente immersa nel verde con giardino ombreggiato e spazio per laboratori.",
+      "en": "Independent house surrounded by greenery with a shaded garden and space for workshops."
+    },
+    "location": "Campagna di Riace (RC)",
+    "cover": "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=1600&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1470123186770-69bf0c1f0e6f?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=1600&q=80"
+    ],
+    "tags": ["giardino", "gruppi", "laboratori"],
+    "active": true
+  }
+]

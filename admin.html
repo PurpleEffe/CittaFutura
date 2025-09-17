@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-i18n="admin.page.title">Pannello di amministrazione</title>
+    <meta name="robots" content="noindex" />
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body class="bg-sand text-dusk">
+    <div class="flex min-h-screen flex-col">
+      <header class="bg-sand/95 shadow-sm">
+        <nav class="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
+          <a href="/" class="flex items-center space-x-2" aria-label="Home">
+            <span class="rounded-full bg-terracotta px-3 py-1 text-xs font-semibold uppercase tracking-widest text-white">CF</span>
+            <span class="font-display text-lg" data-i18n="site.name">Le case di Città Futura</span>
+          </a>
+          <div class="flex items-center space-x-6 text-sm font-medium">
+            <a class="hover:text-terracotta focus-visible:outline focus-visible:outline-terracotta" href="/" data-i18n="nav.home">Home</a>
+            <a class="hover:text-terracotta focus-visible:outline focus-visible:outline-terracotta" href="/houses.html" data-i18n="nav.houses">Case</a>
+            <a class="hover:text-terracotta focus-visible:outline focus-visible:outline-terracotta" href="/book.html" data-i18n="nav.book">Prenota</a>
+            <a class="text-terracotta" href="/admin.html" data-i18n="nav.admin">Admin</a>
+            <div x-data="languageSwitcher" class="relative">
+              <button
+                @click="toggle"
+                @keydown.escape="close"
+                class="flex items-center space-x-1 rounded-full border border-terracotta px-3 py-1 text-xs font-semibold text-terracotta focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta"
+                :aria-expanded="open"
+                type="button"
+              >
+                <span x-text="current.toUpperCase()"></span>
+                <svg class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.186l3.71-3.955a.75.75 0 011.08 1.04l-4.24 4.52a.75.75 0 01-1.08 0l-4.24-4.52a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                </svg>
+              </button>
+              <div x-show="open" x-transition.opacity @click.away="close" class="absolute right-0 mt-2 w-36 rounded-xl bg-white p-2 shadow-lg ring-1 ring-black/5">
+                <button class="w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-sand" type="button" @click="switchTo('it')">
+                  <span data-i18n="nav.language.it">Italiano</span>
+                </button>
+                <button class="w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-sand" type="button" @click="switchTo('en')">
+                  <span data-i18n="nav.language.en">English</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <main class="flex-1 bg-gradient-to-b from-white to-sand" x-data="adminApp">
+        <section class="mx-auto max-w-5xl px-6 py-12 space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h1 class="font-display text-3xl" data-i18n="admin.page.title">Pannello di amministrazione</h1>
+              <p class="mt-2 text-dusk/80" data-i18n="admin.page.subtitle">
+                Gestisci prenotazioni e gallerie. Accesso riservato ai collaboratori della repo GitHub.
+              </p>
+            </div>
+            <template x-if="authenticated">
+              <button class="btn-secondary" type="button" @click="logout" data-i18n="admin.auth.logout">Disconnetti</button>
+            </template>
+          </div>
+
+          <template x-if="error === 'missing-client'">
+            <div class="rounded-xl bg-white p-6 text-sm text-terracotta shadow" role="alert">
+              <p>Imposta il client_id GitHub in /.well-known/config.json.</p>
+            </div>
+          </template>
+          <template x-if="error === 'oauth'">
+            <div class="rounded-xl bg-white p-6 text-sm text-terracotta shadow" role="alert">
+              <p>OAuth non completato. Riprova tra poco.</p>
+            </div>
+          </template>
+          <template x-if="error === 'forbidden'">
+            <div class="rounded-xl bg-white p-6 text-sm text-terracotta shadow" role="alert">
+              <p data-i18n="admin.auth.denied">Non hai i permessi necessari per modificare questo progetto.</p>
+            </div>
+          </template>
+
+          <template x-if="!authenticated && !loading">
+            <div class="rounded-3xl bg-white p-8 shadow">
+              <p class="text-sm text-dusk/80" data-i18n="admin.page.subtitle"></p>
+              <button class="btn-primary mt-4" type="button" @click="login" data-i18n="admin.auth.login">Accedi con GitHub</button>
+            </div>
+          </template>
+
+          <template x-if="checkingPermissions">
+            <p class="text-sm text-dusk/80" data-i18n="admin.auth.checking">Verifica permessi…</p>
+          </template>
+
+          <template x-if="authenticated">
+            <div class="space-y-10">
+              <section class="space-y-4">
+                <div class="flex flex-col gap-4 rounded-3xl bg-white p-6 shadow">
+                  <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                    <div class="flex flex-wrap gap-4">
+                      <div>
+                        <label class="block text-xs uppercase tracking-wide text-dusk/60" for="statusFilter" data-i18n="admin.bookings.table.headers.status">Stato</label>
+                        <select
+                          id="statusFilter"
+                          class="rounded-xl border border-dusk/20 bg-white px-3 py-2 text-sm focus:border-terracotta focus:ring-terracotta"
+                          x-model="filters.status"
+                        >
+                          <option value="all" data-i18n="admin.filters.status.all">Tutti gli stati</option>
+                          <option value="pending" data-i18n="admin.bookings.status.pending">In attesa</option>
+                          <option value="approved" data-i18n="admin.bookings.status.approved">Approvata</option>
+                          <option value="rejected" data-i18n="admin.bookings.status.rejected">Rifiutata</option>
+                          <option value="canceled" data-i18n="admin.bookings.status.canceled">Annullata</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label class="block text-xs uppercase tracking-wide text-dusk/60" for="searchFilter" data-i18n="admin.filters.search">Cerca per nome o email…</label>
+                        <input
+                          id="searchFilter"
+                          type="search"
+                          class="rounded-xl border border-dusk/20 bg-white px-3 py-2 text-sm focus:border-terracotta focus:ring-terracotta"
+                          :placeholder="tKey('admin.filters.search')"
+                          x-model.debounce.300ms="filters.search"
+                        />
+                      </div>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                      <button type="button" class="btn-secondary" @click="refreshData" data-i18n="admin.bookings.refresh">Aggiorna elenco</button>
+                      <button type="button" class="btn-secondary" @click="exportCsv" data-i18n="admin.actions.export">Esporta CSV</button>
+                    </div>
+                  </div>
+                  <p class="text-xs text-dusk/60" x-text="lastUpdated ? `${tKey('admin.bookings.lastUpdated')}: ${formatTimestamp(lastUpdated)}` : ''"></p>
+                </div>
+
+                <div class="overflow-hidden rounded-3xl bg-white shadow">
+                  <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-dusk/10 text-left text-sm">
+                      <thead class="bg-sand/60">
+                        <tr>
+                          <th class="px-4 py-3 font-medium" data-i18n="admin.bookings.table.headers.house">Casa</th>
+                          <th class="px-4 py-3 font-medium" data-i18n="admin.bookings.table.headers.name">Ospite</th>
+                          <th class="px-4 py-3 font-medium" data-i18n="admin.bookings.table.headers.dates">Date</th>
+                          <th class="px-4 py-3 font-medium" data-i18n="admin.bookings.table.headers.people">Persone</th>
+                          <th class="px-4 py-3 font-medium" data-i18n="admin.bookings.table.headers.status">Stato</th>
+                          <th class="px-4 py-3 font-medium" data-i18n="admin.bookings.table.headers.actions">Azioni</th>
+                        </tr>
+                      </thead>
+                      <tbody class="divide-y divide-dusk/10" x-show="filteredBookings.length">
+                        <template x-for="booking in filteredBookings" :key="booking.id">
+                          <tr class="hover:bg-sand/30">
+                            <td class="px-4 py-3 font-medium" x-text="houseName(booking.houseId)"></td>
+                            <td class="px-4 py-3">
+                              <div class="font-semibold" x-text="booking.name"></div>
+                              <div class="text-xs text-dusk/60" x-text="booking.email"></div>
+                            </td>
+                            <td class="px-4 py-3 text-sm text-dusk/70" x-text="formatDates(booking)"></td>
+                            <td class="px-4 py-3 text-sm" x-text="peopleLabel(booking)"></td>
+                            <td class="px-4 py-3">
+                              <span class="inline-flex rounded-full bg-sand px-3 py-1 text-xs font-semibold" x-text="statusLabel(booking.status)"></span>
+                            </td>
+                            <td class="px-4 py-3">
+                              <div class="flex flex-wrap gap-2">
+                                <button type="button" class="btn-secondary px-3 py-1" @click="changeStatus(booking, 'approved')" data-i18n="admin.actions.approve">Approva</button>
+                                <button type="button" class="btn-secondary px-3 py-1" @click="changeStatus(booking, 'rejected')" data-i18n="admin.actions.reject">Rifiuta</button>
+                                <button type="button" class="btn-secondary px-3 py-1" @click="changeStatus(booking, 'canceled')" data-i18n="admin.actions.cancel">Annulla</button>
+                                <button type="button" class="btn-secondary px-3 py-1" @click="editBooking(booking)" data-i18n="admin.actions.edit">Modifica</button>
+                                <button type="button" class="btn-secondary px-3 py-1 text-terracotta" @click="deleteBooking(booking)" data-i18n="admin.actions.delete">Elimina</button>
+                              </div>
+                            </td>
+                          </tr>
+                        </template>
+                      </tbody>
+                    </table>
+                  </div>
+                  <template x-if="!filteredBookings.length">
+                    <p class="px-6 py-8 text-center text-sm text-dusk/60" data-i18n="admin.bookings.empty">Nessuna prenotazione registrata.</p>
+                  </template>
+                </div>
+              </section>
+
+              <section class="space-y-4">
+                <div class="flex items-start justify-between">
+                  <div>
+                    <h2 class="font-display text-2xl" data-i18n="admin.images.title">Foto case</h2>
+                    <p class="text-sm text-dusk/70" data-i18n="admin.images.subtitle">
+                      Carica nuove immagini (JPG/PNG, max 2MB). Aggiorna l’ordine trascinando.
+                    </p>
+                  </div>
+                </div>
+                <div class="space-y-6">
+                  <template x-for="house in houses" :key="house.id">
+                    <div class="rounded-3xl bg-white p-6 shadow">
+                      <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                        <div>
+                          <h3 class="text-xl font-semibold" x-text="houseName(house.id)"></h3>
+                          <p class="text-sm text-dusk/60" x-text="house.location"></p>
+                        </div>
+                        <label class="btn-secondary cursor-pointer">
+                          <input type="file" class="hidden" accept="image/*" @change="uploadImage($event, house)" />
+                          <span data-i18n="admin.images.upload">Carica immagine</span>
+                        </label>
+                      </div>
+                      <template x-if="!house.gallery?.length">
+                        <p class="mt-4 text-sm text-dusk/60" data-i18n="admin.images.empty">Nessuna immagine disponibile.</p>
+                      </template>
+                      <div class="mt-4 grid gap-4 md:grid-cols-3" x-show="house.gallery?.length">
+                        <template x-for="image in house.gallery" :key="image">
+                          <figure class="relative overflow-hidden rounded-2xl border border-dusk/10">
+                            <img :src="image" alt="" class="h-40 w-full object-cover" loading="lazy" />
+                            <div class="absolute left-2 top-2 flex items-center gap-2">
+                              <span
+                                class="rounded-full bg-dusk/80 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-white"
+                                x-show="house.cover === image"
+                                data-i18n="admin.images.coverBadge"
+                              >Cover</span>
+                            </div>
+                            <div class="absolute inset-x-0 bottom-2 flex justify-center gap-2">
+                              <button type="button" class="rounded-full bg-white/90 px-2 py-1 text-xs" @click="moveImage(house, image, -1)" data-i18n="admin.images.moveUp">Su</button>
+                              <button type="button" class="rounded-full bg-white/90 px-2 py-1 text-xs" @click="moveImage(house, image, 1)" data-i18n="admin.images.moveDown">Giù</button>
+                            </div>
+                            <div class="absolute inset-x-0 bottom-0 flex justify-between p-2 text-xs">
+                              <button type="button" class="rounded-full bg-white/90 px-3 py-1" @click="setCover(house, image)" data-i18n="admin.images.setCover">Imposta cover</button>
+                              <button type="button" class="rounded-full bg-white/90 px-3 py-1 text-terracotta" @click="removeImage(house, image)" data-i18n="admin.images.remove">Rimuovi</button>
+                            </div>
+                          </figure>
+                        </template>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+              </section>
+            </div>
+          </template>
+        </section>
+
+        <div
+          class="fixed inset-0 z-50 flex items-center justify-center bg-dusk/40 px-4"
+          x-show="modalOpen"
+          x-transition.opacity
+          role="dialog"
+          aria-modal="true"
+        >
+          <div class="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-3xl bg-white p-6 shadow-xl" x-show="modalOpen" x-transition>
+            <h2 class="text-xl font-semibold mb-4" data-i18n="admin.actions.edit">Modifica</h2>
+            <form class="space-y-4" @submit.prevent="saveBooking">
+              <div class="grid gap-4 md:grid-cols-2">
+                <div>
+                  <label class="text-xs uppercase tracking-wide text-dusk/60" for="edit-name">Nome</label>
+                  <input id="edit-name" type="text" class="mt-1 w-full rounded-xl border border-dusk/20 px-3 py-2" x-model="editableBooking.name" required />
+                </div>
+                <div>
+                  <label class="text-xs uppercase tracking-wide text-dusk/60" for="edit-email">Email</label>
+                  <input id="edit-email" type="email" class="mt-1 w-full rounded-xl border border-dusk/20 px-3 py-2" x-model="editableBooking.email" required />
+                </div>
+                <div>
+                  <label class="text-xs uppercase tracking-wide text-dusk/60" for="edit-phone">Telefono</label>
+                  <input id="edit-phone" type="text" class="mt-1 w-full rounded-xl border border-dusk/20 px-3 py-2" x-model="editableBooking.phone" />
+                </div>
+                <div>
+                  <label class="text-xs uppercase tracking-wide text-dusk/60" for="edit-status">Stato</label>
+                  <select id="edit-status" class="mt-1 w-full rounded-xl border border-dusk/20 px-3 py-2" x-model="editableBooking.status">
+                    <option value="pending" data-i18n="admin.bookings.status.pending">In attesa</option>
+                    <option value="approved" data-i18n="admin.bookings.status.approved">Approvata</option>
+                    <option value="rejected" data-i18n="admin.bookings.status.rejected">Rifiutata</option>
+                    <option value="canceled" data-i18n="admin.bookings.status.canceled">Annullata</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="text-xs uppercase tracking-wide text-dusk/60" for="edit-checkin">Arrivo</label>
+                  <input id="edit-checkin" type="date" class="mt-1 w-full rounded-xl border border-dusk/20 px-3 py-2" x-model="editableBooking.checkin" />
+                </div>
+                <div>
+                  <label class="text-xs uppercase tracking-wide text-dusk/60" for="edit-checkout">Partenza</label>
+                  <input id="edit-checkout" type="date" class="mt-1 w-full rounded-xl border border-dusk/20 px-3 py-2" x-model="editableBooking.checkout" />
+                </div>
+              </div>
+              <div>
+                <label class="text-xs uppercase tracking-wide text-dusk/60" for="edit-people">Persone</label>
+                <input id="edit-people" type="number" min="1" class="mt-1 w-full rounded-xl border border-dusk/20 px-3 py-2" x-model.number="editableBooking.people" />
+              </div>
+              <div>
+                <label class="text-xs uppercase tracking-wide text-dusk/60" for="edit-notes">Note</label>
+                <textarea id="edit-notes" rows="4" class="mt-1 w-full rounded-xl border border-dusk/20 px-3 py-2" x-model="editableBooking.notes"></textarea>
+              </div>
+              <div class="flex justify-end gap-3">
+                <button type="button" class="btn-secondary" @click="closeModal" data-i18n="admin.actions.close">Chiudi</button>
+                <button type="submit" class="btn-primary" data-i18n="admin.actions.save">Salva</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+
+      <footer class="bg-dusk text-sand">
+        <div class="mx-auto max-w-5xl space-y-4 px-6 py-10 text-sm">
+          <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+            <p data-i18n="footer.rights">© Città Futura. Tutti i diritti riservati.</p>
+            <p data-i18n="footer.credit.photos">
+              Foto: Luca Bravo, Cristina Gottardi, Federico Di Dio, Jason Blackeye, Tim Graf, Shifaaz Shamoon via Unsplash (licenza Unsplash).
+            </p>
+          </div>
+          <p data-i18n="footer.credit.contact">Per collaborare: cittafutura@example.org</p>
+        </div>
+      </footer>
+    </div>
+
+    <div class="pointer-events-none fixed inset-0 z-[60] flex flex-col items-end space-y-2 p-4" x-data>
+      <template x-for="toast in $store.toast.items" :key="toast.id">
+        <div
+          class="pointer-events-auto w-full max-w-xs rounded-2xl bg-white p-4 shadow-lg ring-1 ring-black/5"
+          :class="{ 'border-l-4 border-terracotta': toast.type === 'error', 'border-l-4 border-olive': toast.type === 'success' }"
+        >
+          <p class="text-sm text-dusk" x-text="toast.message"></p>
+        </div>
+      </template>
+    </div>
+  </body>
+</html>

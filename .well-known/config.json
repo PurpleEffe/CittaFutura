@@ -1,0 +1,9 @@
+{
+  "githubClientId": "YOUR_GITHUB_CLIENT_ID",
+  "oauthProxyUrl": "https://your-proxy.example.com/api/exchange",
+  "staticman": {
+    "enabled": true,
+    "endpoint": "https://api.staticman.net/v3/entry/github/your-org/cittafutura/main/bookings"
+  },
+  "bookingIssueFallbackUrl": "https://github.com/your-org/cittafutura/issues/new?template=booking.md"
+}
