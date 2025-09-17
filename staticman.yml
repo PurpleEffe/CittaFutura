@@ -1,35 +1,34 @@
-comments:
-  bookings:
-    enabled: true
-    branch: main
-    path: "data/bookings"
-    filename: "{options.slug}.json"
-    format: json
-    moderation: true
-    commitMessage: "feat(booking): add {fields.id}"
-    transforms:
-      email: lower
-    allowedFields:
-      - id
-      - houseId
-      - name
-      - email
-      - phone
-      - checkin
-      - checkout
-      - people
-      - notes
-      - status
-      - createdAt
-      - source
-    requiredFields:
-      - houseId
-      - name
-      - email
-      - phone
-      - checkin
-      - checkout
-      - people
-    message:
-      success: "Booking received"
-      error: "Unable to save booking"
+bookings:
+  enabled: true
+  branch: main
+  path: "data/bookings"
+  filename: "{options.slug}.json"
+  format: json
+  moderation: true
+  commitMessage: "feat(booking): add {fields.id}"
+  transforms:
+    email: lower
+  allowedFields:
+    - id
+    - houseId
+    - name
+    - email
+    - phone
+    - checkin
+    - checkout
+    - people
+    - notes
+    - status
+    - createdAt
+    - source
+  requiredFields:
+    - houseId
+    - name
+    - email
+    - phone
+    - checkin
+    - checkout
+    - people
+  message:
+    success: "Booking received"
+    error: "Unable to save booking"
